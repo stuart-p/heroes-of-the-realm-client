@@ -6,6 +6,7 @@ import LandingPage from "./components/LandingPage-components/LandingPage";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import JobBoard from "./components/JobBoard-Components/JobBoard";
+import AdventurerRankingPage from "./components/AdventurerRanking/AdventurerRankingPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Router className="main">
         <LandingPage path="/" />
         <JobBoard path="/jobs" />
+        <AdventurerRankingPage path="/adventurers/*" />
       </Router>
     </>
   );

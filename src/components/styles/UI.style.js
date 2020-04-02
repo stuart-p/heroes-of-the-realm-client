@@ -10,6 +10,13 @@ export const Button = styled.button`
   color: white;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
   font-size: 1.3em;
+  transition: all 0.5s ease;
+  &:hover {
+    background: ${theme.c};
+  }
+  &:active {
+    background: ${theme.b};
+  }
 `;
 
 export const AuthForm = styled.form`

@@ -26,9 +26,9 @@ const LandingPage = observer(() => {
           <JumboHeading>Heroes of the Realm</JumboHeading>
         </div>
         {auth.loggedIn ? (
-          <Button>
-            <Link to="/jobs">find local quests</Link>
-          </Button>
+          <Link to="/adventurers">
+            <Button>find nearby quests</Button>
+          </Link>
         ) : (
           <section className="jumboSubHeadingContainer">
             <FrostedContainer />

@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import theme from "./themes";
+import { Link } from "@reach/router";
 
 export const JumboHeading = styled.h1`
   font-family: "Cinzel Decorative", cursive;
@@ -32,7 +33,28 @@ export const SubHeading = styled.h3`
       color: ${props.color};
     `}
 `;
+export const SectionHeading = styled.h4`
+  font-family: "Raleway", sans-serif;
+  font-size: 1.1rem;
+  padding: 3px 5px;
+  font-weight: 700;
+  margin: 0;
+  text-align: left;
+  ${props =>
+    props.decorative &&
+    css`
+      font-family: "Cinzel Decorative", cursive;
+      font-weight: 700;
 
+      margin: 20px 0 0 0;
+    `}
+
+  ${props =>
+    props.color &&
+    css`
+      color: ${props.color};
+    `}
+`;
 export const ParaText = styled.p`
   font-family: "Raleway", sans-serif;
   font-size: 1.1rem;
@@ -67,4 +89,9 @@ export const LineBreak = styled.hr`
   border: none;
   border-top: 2px solid ${theme.c};
   margin: 5px 0px 5px;
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
