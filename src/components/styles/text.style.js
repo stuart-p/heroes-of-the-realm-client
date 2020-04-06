@@ -55,6 +55,22 @@ export const SectionHeading = styled.h4`
       color: ${props.color};
     `}
 `;
+
+export const KeyText = styled.h5`
+  font-family: "Raleway", sans-serif;
+  font-size: 1.1rem;
+  padding: 5px 20px;
+  margin: 0;
+  text-align: left;
+  max-width: 75ch;
+
+  ${props =>
+    props.color &&
+    css`
+      color: ${props.color};
+    `}
+`;
+
 export const ParaText = styled.p`
   font-family: "Raleway", sans-serif;
   font-size: 1.1rem;

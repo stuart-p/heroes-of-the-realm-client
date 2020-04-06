@@ -49,7 +49,7 @@ export const HeaderIcon = styled.div`
     }
   }
 
-  ${props =>
+  ${(props) =>
     props.navShowing &&
     css`
       height: 17.5em;
@@ -126,6 +126,7 @@ export const FrostedContainer = styled.div`
   bottom: 0px;
   left: 0px;
   right: 0px;
+  border-radius: 3px;
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   box-shadow: 0 0.3px 0.7px rgba(0, 0, 0, 0.126),
@@ -291,7 +292,7 @@ export const AdventurerDetailPane = styled.main`
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 6;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -306,4 +307,108 @@ export const AdventureDetailedCard = styled.section`
   background-color: ${theme.d};
   border-radius: 2vw;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
+
+  ${(props) =>
+    props.altBG &&
+    css`
+      background-color: ${props.altBG};
+    `}
+`;
+
+export const QuestListContainter = styled.section`
+  width: 90vw;
+  height: 80vh;
+`;
+
+export const ActiveQuestsList = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  list-style-type: none;
+`;
+
+export const QuestCardListItem = styled.li`
+  --bgColor: ${(props) => (props.isInProgress ? theme.c : theme.d)};
+
+  padding-top: 36vh;
+  z-index: 1;
+  transition-property: z-index;
+  transition-duration: 0.3s;
+  margin: 0 2vw 0 0;
+  position: relative;
+
+  .questDetailsContainer {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+    width: 98%;
+    height: 95%;
+    top: 0;
+    background-color: var(--bgColor);
+    border-radius: 2vw;
+    -webkit-filter: drop-shadow(2px 6px 3px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(2px 6px 3px rgba(0, 0, 0, 0.4));
+    transform: translate(0, 0);
+    transition-property: transform;
+    transition-duration: 0.3s;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  h4,
+  h5 {
+    margin: 4% 6%;
+    z-index: 4;
+    position: relative;
+  }
+
+  h4 {
+    justify-self: flex-start;
+    align-self: flex-start;
+    margin-bottom: auto;
+  }
+
+  h5 {
+    padding: 5px 5px;
+  }
+  figure {
+    position: absolute;
+    z-index: 3;
+    width: 88%;
+    height: 91%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    transform: translatex(6.5%) translateY(5%);
+    border-radius: 1.2vw;
+    overflow: hidden;
+    align-self: flex-start;
+
+    img {
+      position: relative;
+      left: 50%;
+      height: 120%;
+      transform: translate(-50%, -2%);
+      transition: transform, height 0.4s ease;
+      z-index: 2;
+      border-radius: inherit;
+    }
+  }
+
+  &:not(:active):hover {
+    z-index: 4;
+  }
+  &:not(:active):hover .questDetailsContainer {
+    transform: translate(0%, 10%) scale(1.4);
+  }
+  &:not(:active):hover img {
+    height: 160%;
+    transform: translate(-50%, -14%);
+
+    z-index: 2;
+  }
 `;

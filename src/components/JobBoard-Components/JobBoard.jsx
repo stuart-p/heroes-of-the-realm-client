@@ -2,22 +2,29 @@ import React from "react";
 import { ParaText } from "../styles/text.style";
 import { observer } from "mobx-react";
 import { auth } from "../../stores/auth";
-import { Redirect, Link } from "@reach/router";
+import { Redirect, Link, Router } from "@reach/router";
 import { getJobs } from "../../api/jobBoard.api";
+import JobDetails from "./JobDetails";
+import JobCard from "./JobCard";
+import {
+  QuestListContainter,
+  ActiveQuestsList
+} from "../styles/Containers.style";
 
 const JobBoard = observer(
   class JobBoard extends React.Component {
     state = {
-      jobList: {}
+      quests: []
     };
 
     componentDidMount = () => {
-      getJobs().then(jobList => {
-        this.setState({ jobList });
+      getJobs().then(({ quests }) => {
+        this.setState({ quests });
       });
     };
 
     render() {
+      console.log(this.state.quests);
       return auth.loggedIn ? (
         <>
           <div>
@@ -27,15 +34,16 @@ const JobBoard = observer(
               Adventurer's Guild level ranking.
             </ParaText>
           </div>
-          <ul>
-            {Object.keys(this.state.jobList).map(jobID => {
-              return (
-                <li key={jobID}>
-                  <h3>{this.state.jobList[jobID].title}</h3>
-                </li>
-              );
-            })}
-          </ul>
+          <QuestListContainter>
+            <ActiveQuestsList>
+              {this.state.quests.map(quest => {
+                return <JobCard {...quest} key={quest.id} />;
+              })}
+            </ActiveQuestsList>
+          </QuestListContainter>
+          <Router>
+            <JobDetails path=":id" />
+          </Router>
         </>
       ) : (
         <Redirect noThrow to="/" />

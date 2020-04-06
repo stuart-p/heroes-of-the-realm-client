@@ -15,7 +15,7 @@ function App() {
       <ToastContainer position="top-left" hideProgressBar={false} />
       <Router className="main">
         <LandingPage path="/" />
-        <JobBoard path="/jobs" />
+        <JobBoard path="/quests/*" />
         <AdventurerRankingPage path="/adventurers/*" />
       </Router>
     </>
