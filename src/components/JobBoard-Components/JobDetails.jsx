@@ -58,6 +58,9 @@ class JobDetails extends React.Component {
             <Button onClick={this.clickBeginQuest}>begin quest!</Button>
           )}
           {this.state.quest.isInProgress && <p>in progress!</p>}
+          {this.state.quest.isInProgress && (
+            <p>{this.state.quest.assignedUser} on quest</p>
+          )}
         </AdventureDetailedCard>
       </AdventurerDetailPane>
     );

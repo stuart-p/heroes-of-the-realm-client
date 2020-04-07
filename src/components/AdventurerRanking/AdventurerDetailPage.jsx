@@ -4,13 +4,13 @@ import { formatCharClass } from "../../utils/formatting.utils";
 import {
   AdventurerDetailPane,
   FrostedContainer,
-  AdventureDetailedCard
+  AdventureDetailedCard,
 } from "../styles/Containers.style";
 import { StyledLink, ParaText } from "../styles/text.style";
 
 class AdventurerDetailPage extends React.Component {
   state = {
-    adventurer: {}
+    adventurer: {},
   };
   componentDidMount = () => {
     getAdventurer(this.props.id).then(({ adventurer }) => {
@@ -27,7 +27,9 @@ class AdventurerDetailPage extends React.Component {
   render() {
     return (
       <AdventurerDetailPane>
-        <FrostedContainer />
+        <StyledLink to="../">
+          <FrostedContainer />
+        </StyledLink>
         <AdventureDetailedCard>
           <StyledLink to="../">
             <ParaText>Back</ParaText>
@@ -38,6 +40,15 @@ class AdventurerDetailPage extends React.Component {
           <h4>{formatCharClass(this.state.adventurer.charClass)}</h4>
           <h4>Level {this.state.adventurer.level}</h4>
           <h4> {this.state.adventurer.experience} experience</h4>
+          <ul>
+            {this.state.adventurer.quests.map((quest) => {
+              return (
+                <li key={quest.id}>
+                  <p>{quest.title}</p>
+                </li>
+              );
+            })}
+          </ul>
         </AdventureDetailedCard>
       </AdventurerDetailPane>
     );
