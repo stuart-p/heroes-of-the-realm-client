@@ -26,7 +26,7 @@ export const getJob = (id) => {
 export const beginJob = (id) => {
   return axios
     .patch(
-      baseURL + id,
+      `${baseURL}${id}/begin`,
       { UserID: auth.userID },
       { headers: { authorization: `bearer ${auth.token}` } }
     )

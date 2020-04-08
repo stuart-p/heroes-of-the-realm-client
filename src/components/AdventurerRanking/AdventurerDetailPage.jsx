@@ -10,7 +10,7 @@ import { StyledLink, ParaText } from "../styles/text.style";
 
 class AdventurerDetailPage extends React.Component {
   state = {
-    adventurer: {},
+    adventurer: { quests: [] },
   };
   componentDidMount = () => {
     getAdventurer(this.props.id).then(({ adventurer }) => {
