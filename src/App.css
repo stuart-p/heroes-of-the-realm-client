@@ -54,3 +54,12 @@ body {
 .loginTransitions-exit-active {
   opacity: 0;
 }
+
+.standardToastStyle .Toastify__toast {
+  background-color: #cb4545;
+  color: white;
+  border-radius: 2px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.2em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
+}

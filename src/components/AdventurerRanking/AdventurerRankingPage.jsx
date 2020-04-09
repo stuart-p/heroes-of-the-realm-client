@@ -2,19 +2,21 @@ import React, { Component } from "react";
 import { ParaText } from "../styles/text.style";
 import { getAdventurers } from "../../api/adventurers.api";
 import { auth } from "../../stores/auth";
-import { Redirect, Router, Link } from "@reach/router";
+import { Redirect, Router } from "@reach/router";
 import { observer } from "mobx-react";
 import AdventurerDetailPage from "./AdventurerDetailPage";
 import {
   AdventurerListContainter,
-  AdventurerRankingList
+  AdventurerRankingList,
 } from "../styles/Containers.style";
 import AdventurerCard from "./AdventurerCard";
+import { toast } from "react-toastify";
+import { formatErrorMessage } from "../../utils/formatting.utils";
 
 const AdventurerRankingPage = observer(
   class AdventurerRankingPage extends Component {
     state = {
-      adventurers: []
+      adventurers: [],
     };
 
     componentDidMount = () => {
@@ -22,8 +24,10 @@ const AdventurerRankingPage = observer(
         .then(({ adventurers }) => {
           this.setState({ adventurers });
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
+          const msg = formatErrorMessage(err);
+          toast.error(`Err. ${msg}`);
         });
     };
 
@@ -35,7 +39,7 @@ const AdventurerRankingPage = observer(
           </div>
           <AdventurerListContainter>
             <AdventurerRankingList>
-              {this.state.adventurers.map(adventurer => {
+              {this.state.adventurers.map((adventurer) => {
                 return <AdventurerCard {...adventurer} key={adventurer.id} />;
               })}
             </AdventurerRankingList>

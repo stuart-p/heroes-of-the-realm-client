@@ -9,7 +9,6 @@ export const getJobs = () => {
       headers: { authorization: `bearer ${auth.token}` },
     })
     .then((res) => {
-      console.log(res);
       return { quests: res.data };
     });
 };
@@ -18,19 +17,31 @@ export const getJob = (id) => {
   return axios
     .get(baseURL + id, { headers: { authorization: `bearer ${auth.token}` } })
     .then((res) => {
-      console.log(res);
       return { quest: res.data };
     });
 };
 
 export const beginJob = (id) => {
-  return axios
-    .patch(
-      `${baseURL}${id}/begin`,
-      { UserID: auth.userID },
-      { headers: { authorization: `bearer ${auth.token}` } }
-    )
-    .then((res) => {
-      console.log(res);
-    });
+  return axios.patch(
+    `${baseURL}${id}/begin`,
+    { UserID: auth.userID },
+    { headers: { authorization: `bearer ${auth.token}` } }
+  );
+};
+
+export const requestCreateNewQuest = () => {
+  return axios.post(
+    baseURL + "new",
+    {},
+    { headers: { authorization: `bearer ${auth.token}` } }
+  );
+};
+
+export const requestQuestCompletion = (id) => {
+  console.log(auth.token);
+  return axios.patch(
+    `${baseURL}${id}/complete`,
+    {},
+    { headers: { authorization: `bearer ${auth.token}` } }
+  );
 };

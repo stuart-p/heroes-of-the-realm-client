@@ -4,27 +4,30 @@ import { LoginContainer } from "../styles/Containers.style";
 import { Button, AuthForm } from "../styles/UI.style";
 import { toast } from "react-toastify";
 import { logOut } from "../../stores/auth";
+import { formatErrorMessage } from "../../utils/formatting.utils";
+import { redirectTo, navigate } from "@reach/router";
 
 class LoginForm extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     event.preventDefault();
     loginRequest(this.state.username, this.state.password)
       .then(() => {
-        console.log("logged in!");
         toast.success("logged in!");
         this.props.hideOnSucess();
+        navigate("/quests");
       })
-      .catch(err => {
-        toast.error("login failed");
+      .catch((err) => {
+        const errorMsg = formatErrorMessage(err);
+        toast.error(`Error. ${errorMsg}`);
         logOut();
       });
     this.setState({ username: "", password: "" });

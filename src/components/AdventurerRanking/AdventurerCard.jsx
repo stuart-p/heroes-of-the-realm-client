@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "@reach/router";
 import { StyledLink, ParaText, SectionHeading } from "../styles/text.style";
 import { AdventurerCardListItem } from "../styles/Containers.style";
 
@@ -11,7 +10,7 @@ const AdventurerCard = ({ knownAs, level, photoURL, charClass, id }) => {
           <SectionHeading color={"white"}>{knownAs}</SectionHeading>
           <ParaText color={"white"}> level {level}</ParaText>
           <figure>
-            <img src={photoURL} />
+            <img src={photoURL} alt="adventurer avatar" />
           </figure>
         </div>
       </StyledLink>

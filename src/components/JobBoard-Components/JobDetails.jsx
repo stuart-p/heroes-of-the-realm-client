@@ -7,8 +7,12 @@ import {
 import { StyledLink, ParaText } from "../styles/text.style";
 import { Button } from "../styles/UI.style";
 import { getJob, beginJob } from "../../api/jobBoard.api";
-import { formatDurationString } from "../../utils/formatting.utils";
+import {
+  formatDurationString,
+  formatErrorMessage,
+} from "../../utils/formatting.utils";
 import theme from "../styles/themes";
+import { toast } from "react-toastify";
 
 class JobDetails extends React.Component {
   state = {
@@ -16,15 +20,14 @@ class JobDetails extends React.Component {
   };
 
   componentDidMount = () => {
-    getJob(this.props.id).then(({ quest }) => {
-      this.setState({ quest });
-    });
-  };
-
-  componentDidUpdate = (prevProps, prevState) => {
-    if (prevState.quest.isInProgress !== this.state.quest.isInProgress) {
-      console.log("change in job state");
-    }
+    getJob(this.props.id)
+      .then(({ quest }) => {
+        this.setState({ quest });
+      })
+      .catch((err) => {
+        const errorMsg = formatErrorMessage(err);
+        toast.error(`Error. ${errorMsg}`);
+      });
   };
 
   clickBeginQuest = (event) => {
@@ -33,10 +36,12 @@ class JobDetails extends React.Component {
         return getJob(this.props.id);
       })
       .then(({ quest }) => {
+        this.props.updateJobBoardOnceBegun(quest.id);
         this.setState({ quest });
       })
       .catch((err) => {
-        console.log(err);
+        const errorMsg = formatErrorMessage(err);
+        toast.error(`Error. ${errorMsg}`);
       });
   };
 

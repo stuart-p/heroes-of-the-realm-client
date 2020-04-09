@@ -6,10 +6,8 @@ import { toast } from "react-toastify";
 import {
   HeaderContainer,
   HeaderButtonBox,
-  LoginContainer,
   HeaderIcon,
-  FrostedContainer,
-  NavMenu
+  NavMenu,
 } from "../styles/Containers.style";
 import { Button, PopupBox } from "../styles/UI.style";
 import LoginForm from "../UI-components/LoginForm";
@@ -22,15 +20,15 @@ const Header = observer(
     state = {
       loginFormShown: false,
       registerFormShown: false,
-      navMenuShown: false
+      navMenuShown: false,
     };
 
     toggleLogin = () => {
-      this.setState(currentState => {
+      this.setState((currentState) => {
         return {
           loginFormShown: !currentState.loginFormShown,
           registerFormShown: false,
-          navMenuShown: false
+          navMenuShown: false,
         };
       });
     };
@@ -38,11 +36,11 @@ const Header = observer(
       this.setState({ loginFormShown: false });
     };
     toggleRegister = () => {
-      this.setState(currentState => {
+      this.setState((currentState) => {
         return {
           registerFormShown: !currentState.registerFormShown,
           loginFormShown: false,
-          navMenuShown: false
+          navMenuShown: false,
         };
       });
     };
@@ -51,11 +49,11 @@ const Header = observer(
     };
 
     toggleNavMenu = () => {
-      this.setState(currentState => {
+      this.setState((currentState) => {
         return {
           navMenuShown: !currentState.navMenuShown,
           loginFormShown: false,
-          registerFormShown: false
+          registerFormShown: false,
         };
       });
     };

@@ -1,22 +1,10 @@
 import React from "react";
-import {
-  StyledLink,
-  SectionHeading,
-  ParaText,
-  KeyText,
-} from "../styles/text.style";
+import { StyledLink, SectionHeading, KeyText } from "../styles/text.style";
 import { formatDurationString } from "../../utils/formatting.utils";
 import {
   QuestCardListItem,
   FrostedContainer,
 } from "../styles/Containers.style";
-
-const rndAround = (input) => {
-  const lower = input - 5;
-  const upper = input + 5;
-
-  return Math.floor(Math.random() * (upper - lower + 1) + lower);
-};
 
 const rndImgNos = [
   10,
@@ -67,17 +55,19 @@ class JobCard extends React.Component {
               {title}
               <FrostedContainer />
             </SectionHeading>
-
-            <KeyText color={"white"}>
-              {experience} XP <FrostedContainer />
-            </KeyText>
-
-            <KeyText color={"white"}>
-              {formatDurationString(duration)} <FrostedContainer />
-            </KeyText>
+            {!isInProgress && (
+              <KeyText color={"white"}>
+                {experience} XP <FrostedContainer />
+              </KeyText>
+            )}
+            {!isInProgress && (
+              <KeyText color={"white"}>
+                {formatDurationString(duration)} <FrostedContainer />
+              </KeyText>
+            )}
 
             <figure>
-              <img src={this.state.image} />
+              <img src={this.state.image} alt="quest graphic" />
             </figure>
           </div>
         </StyledLink>

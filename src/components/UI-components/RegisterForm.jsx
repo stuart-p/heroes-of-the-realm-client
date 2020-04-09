@@ -13,10 +13,10 @@ class RegisterForm extends Component {
     usernameValidity: true,
     passwordValidity: true,
     usernamePopupText: "",
-    passwordPopupText: ""
+    passwordPopupText: "",
   };
 
-  checkUsernameIsValid = input => {
+  checkUsernameIsValid = (input) => {
     const spaceRegx = /[\s]/gi;
     const specialRegx = /[-!$%^&*()_+|~=`{}[:;<>?,.@#\]]/gi;
 
@@ -34,7 +34,7 @@ class RegisterForm extends Component {
     }
   };
 
-  checkPasswordIsValid = input => {
+  checkPasswordIsValid = (input) => {
     const minLength = 4;
     const spaceRegx = /[\s]/gi;
     const lengthTest = input.length < minLength;
@@ -53,35 +53,32 @@ class RegisterForm extends Component {
     }
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
       usernameValidity: true,
-      passwordValidity: true
+      passwordValidity: true,
     });
   };
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     event.preventDefault();
     const usernameValid = this.checkUsernameIsValid(this.state.username);
     const passwordValid = this.checkPasswordIsValid(this.state.password);
     usernameValid &&
       passwordValid &&
       registerRequest(this.state.username, this.state.password)
-        .then(registeredUserDetails => {
-          console.log("registered!");
+        .then((registeredUserDetails) => {
           toast.success("registered new account!");
           this.props.hideOnSucess();
           return registeredUserDetails;
         })
         .then(({ username, password }) => {
-          console.log(username, password);
           loginRequest(username, password);
         })
-        .catch(err => {
-          console.log(err);
+        .catch((err) => {
           const errorMessage = formatErrorMessage(err);
-          toast.error(`something went wrong... ${errorMessage}`);
+          toast.error(`Error. ${errorMessage}`);
           logOut();
         });
     this.setState({ username: "", password: "" });

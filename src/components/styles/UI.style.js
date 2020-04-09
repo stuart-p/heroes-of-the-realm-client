@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import theme from "./themes";
 
 export const Button = styled.button`
@@ -6,7 +6,7 @@ export const Button = styled.button`
   padding: 5px 25px;
   border: none;
   border-radius: 2px;
-  background: ${props => (props.altBG ? theme.c : theme.d)};
+  background: ${(props) => (props.altBG ? theme.c : theme.d)};
   color: white;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
   font-size: 1.3em;
@@ -22,7 +22,7 @@ export const Button = styled.button`
 export const AuthForm = styled.form`
   display: flex;
   flex-direction: column;
-  background-color: ${props => (props.altBG ? theme.b : theme.a)};
+  background-color: ${(props) => (props.altBG ? theme.b : theme.a)};
   border-radius: 2px;
   border: solid 5px ${theme.d};
   box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3),

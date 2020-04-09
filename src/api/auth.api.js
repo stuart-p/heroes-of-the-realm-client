@@ -4,13 +4,13 @@ import {
   setLoginStatus,
   setUserData,
   setExpiry,
+  setTimeStamp,
 } from "../stores/auth";
 import jwt_decode from "jwt-decode";
 
 const baseURL = "http://localhost:5000/api/auth/";
 
 export const loginRequest = (username, password) => {
-  console.log(username, password);
   return axios.post(baseURL + `login`, { username, password }).then((res) => {
     const tokenPayload = jwt_decode(res.data.token);
     if (tokenPayload !== null) {
@@ -18,6 +18,8 @@ export const loginRequest = (username, password) => {
       setLoginStatus(true);
       setUserData(tokenPayload.unique_name, tokenPayload.nameid);
       setExpiry(tokenPayload.exp);
+
+      setTimeStamp(res.data.timeStamp);
     }
 
     return;
