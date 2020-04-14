@@ -72,3 +72,57 @@ export const ListOfLinks = styled.ul`
     }
   }
 `;
+
+export const QuestProgressContainer = styled.div`
+  margin: 4% 6%;
+  position: relative;
+  background-color: ${theme.e};
+  padding: 0;
+  height: 20px;
+  width: 85%;
+  border-radius: 50px;
+  z-index: 4;
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+`;
+
+export const QuestProgressFill = styled.div`
+  background: ${theme.c};
+  height: 100%;
+  border-radius: inherit;
+  transition: width 1s linear;
+  width: ${(props) => props.percentage}%;
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 500px;
+    height: 100%;
+    background-repeat: repeat-x;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(238, 238, 238, 0.5) 0%,
+      rgba(238, 238, 238, 0.5) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(238, 238, 238, 0.5) 50%,
+      rgba(238, 238, 238, 0.5) 75%,
+      transparent 75%,
+      transparent 100%
+    );
+    background-size: 20px;
+    backface-visibility: hidden;
+    animation: shift 3s linear infinite;
+
+    @keyframes shift {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(-60px, 0, 0);
+      }
+    }
+  }
+`;

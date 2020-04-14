@@ -7,6 +7,7 @@ export const HeaderContainer = styled.header`
   right: 0px;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
   z-index: 100;
@@ -86,6 +87,7 @@ export const HeaderButtonBox = styled.menu`
   position: relative;
   margin: 15px 20px 0 0;
   display: flex;
+  padding: 0;
 `;
 
 export const Jumbo = styled.section`
@@ -138,8 +140,8 @@ export const FrostedContainer = styled.div`
 export const LoginContainer = styled.aside`
   position: absolute;
   top: 100%;
-  right: 0;
-  margin: 10px 30px 0 0;
+  left: 0;
+  margin: 10px 30px 0 30px;
   padding: 5px 5px;
 
   overflow: hidden;
@@ -327,7 +329,8 @@ export const ActiveQuestsList = styled.ul`
 `;
 
 export const QuestCardListItem = styled.li`
-  --bgColor: ${(props) => (props.isInProgress ? theme.c : theme.d)};
+  --bgColor: ${(props) =>
+    props.isInProgress ? theme.c : props.isComplete ? theme.e : theme.d};
 
   padding-top: 36vh;
   z-index: 1;
@@ -360,7 +363,8 @@ export const QuestCardListItem = styled.li`
   }
 
   h4,
-  h5 {
+  h5,
+  progress {
     margin: 4% 6%;
     z-index: 4;
     position: relative;
@@ -375,6 +379,7 @@ export const QuestCardListItem = styled.li`
   h5 {
     padding: 5px 5px;
   }
+
   figure {
     position: absolute;
     z-index: 3;
