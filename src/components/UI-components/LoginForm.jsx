@@ -45,6 +45,7 @@ class LoginForm extends Component {
               onChange={this.onChange}
               value={this.state.username}
               required
+              autoFocus
             ></input>
           </label>
           <label>

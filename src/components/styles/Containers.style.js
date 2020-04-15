@@ -11,6 +11,7 @@ export const HeaderContainer = styled.header`
   justify-content: flex-end;
   align-items: flex-start;
   z-index: 100;
+  pointer-events: none;
 `;
 
 export const HeaderIcon = styled.div`
@@ -26,6 +27,7 @@ export const HeaderIcon = styled.div`
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
   height: 2.5em;
+  pointer-events: auto;
   button {
     border: none;
     background: none;
@@ -65,7 +67,7 @@ export const NavMenu = styled.nav`
   overflow: hidden;
   font-size: 1.3em;
   margin-top: 5px;
-
+  pointer-events: auto;
   a {
     text-decoration: none;
     color: white;
@@ -88,6 +90,7 @@ export const HeaderButtonBox = styled.menu`
   margin: 15px 20px 0 0;
   display: flex;
   padding: 0;
+  pointer-events: auto;
 `;
 
 export const Jumbo = styled.section`
@@ -143,7 +146,7 @@ export const LoginContainer = styled.aside`
   left: 0;
   margin: 10px 30px 0 30px;
   padding: 5px 5px;
-
+pointer-events:auto;
   overflow: hidden;
 
   border: none;
@@ -175,6 +178,16 @@ export const ArticleElement = styled.div`
     position: relative;
     z-index: 50;
   }
+
+  ${(props) =>
+    props.adventurerDetails &&
+    css`
+      margin: 0 5px;
+      width: 50%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: 95%;
+    `}
 `;
 
 export const ElementTopStripe = styled.div`
@@ -193,9 +206,8 @@ export const NavLinksContainer = styled.aside`
 `;
 
 export const AdventurerListContainter = styled.section`
-  width: 80vw;
-  height: 80vh;
-  overflow-y: auto;
+  width: 93vw;
+  /* height: 80vh; */
 `;
 
 export const AdventurerRankingList = styled.ul`
@@ -294,19 +306,21 @@ export const AdventurerDetailPane = styled.main`
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 6;
+  z-index: 50;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 export const AdventureDetailedCard = styled.section`
-  width: 500px;
-  max-width: 80vw;
-  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  max-width: 95vw;
+  height: 80vh;
   max-height: 800px;
-
-  background-color: ${theme.d};
+  background-color: ${theme.e};
   border-radius: 2vw;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
 
@@ -315,6 +329,28 @@ export const AdventureDetailedCard = styled.section`
     css`
       background-color: ${props.altBG};
     `}
+`;
+export const AdventurerDetailInfoContainer = styled.section`
+  width: 97%;
+  height: 85%;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 10px 0;
+
+  figure {
+    max-width: 50%;
+    border-radius: 2vw;
+    overflow: hidden;
+    box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+      0 3px 6px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 `;
 
 export const QuestListContainter = styled.section`

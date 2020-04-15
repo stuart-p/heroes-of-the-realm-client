@@ -51,7 +51,15 @@ class JobDetails extends React.Component {
         <StyledLink to="../">
           <FrostedContainer />
         </StyledLink>
-        <AdventureDetailedCard altBG={this.state.quest.isInProgress && theme.c}>
+        <AdventureDetailedCard
+          altBG={
+            this.state.quest.isInProgress
+              ? theme.c
+              : this.state.quest.isComplete
+              ? theme.e
+              : theme.d
+          }
+        >
           <StyledLink to="../">
             <ParaText>Back</ParaText>
           </StyledLink>

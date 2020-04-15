@@ -8,7 +8,6 @@
 }
 
 body {
-  background-color: #e3e4db;
   margin: 0px;
   padding: 0px;
   text-align: center;
@@ -20,7 +19,12 @@ body {
   width: 100vw;
   overscroll-behavior: none;
   font-family: "Raleway", sans-serif;
-  background: url("./assets/heroBG.jpg");
+
+  background-color: #fee9d7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23452735' stroke-width='50.4' stroke-opacity='0.03' %3E%3Ccircle fill='%23fee9d7' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23fee8d6' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23fde7d5' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23fde5d4' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%23fde4d3' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23fce3d2' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23fce2d2' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23fbe0d1' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23fbdfd0' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23fbdecf' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23faddce' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23fadbce' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23f9dacd' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23f9d9cc' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23f8d8cc' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%23f8d6cb' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23f8d5cb' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23f7d4ca' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  /* background by SVGBackgrounds.com */
 }
 
 #root {

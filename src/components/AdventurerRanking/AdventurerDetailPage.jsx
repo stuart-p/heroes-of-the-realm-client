@@ -4,13 +4,29 @@ import {
   formatCharClass,
   formatErrorMessage,
 } from "../../utils/formatting.utils";
+import { OnRouteChange } from "../LandingPage-components/RouteChange";
 import {
   AdventurerDetailPane,
   FrostedContainer,
   AdventureDetailedCard,
+  ExplainerContainer,
+  ArticleElement,
+  ElementTopStripe,
+  AdventurerDetailInfoContainer,
 } from "../styles/Containers.style";
-import { StyledLink, ParaText } from "../styles/text.style";
+import {
+  StyledLink,
+  ParaText,
+  SubHeading,
+  SectionHeading,
+  KeyText,
+  LineBreak,
+} from "../styles/text.style";
+import { Button, ListOfLinks } from "../styles/UI.style";
 import { toast } from "react-toastify";
+import theme from "../styles/themes";
+import { Router, Link } from "@reach/router";
+import JobDetails from "../JobBoard-Components/JobDetails";
 
 class AdventurerDetailPage extends React.Component {
   state = {
@@ -46,24 +62,51 @@ class AdventurerDetailPage extends React.Component {
         </StyledLink>
         <AdventureDetailedCard>
           <StyledLink to="../">
-            <ParaText>Back</ParaText>
+            <Button altBG>Back</Button>
           </StyledLink>
-          <h2>adventurer detail page</h2>
-          <h4>{this.state.adventurer.knownAs}</h4>
-          <img src={this.state.adventurer.photoURL} alt="quest" />
-          <h4>{formatCharClass(this.state.adventurer.charClass)}</h4>
-          <h4>Level {this.state.adventurer.level}</h4>
-          <h4> {this.state.adventurer.experience} experience</h4>
-          <ul>
-            {this.state.adventurer.quests.map((quest) => {
-              return (
-                <li key={quest.id}>
-                  <p>{quest.title}</p>
-                </li>
-              );
-            })}
-          </ul>
+          <AdventurerDetailInfoContainer>
+            <figure>
+              <img src={this.state.adventurer.photoURL} alt="portrait" />
+            </figure>
+            <ArticleElement adventurerDetails>
+              <ElementTopStripe />
+              <div className="onTop">
+                <SubHeading color={"white"}>
+                  {this.state.adventurer.knownAs}
+                </SubHeading>
+                <SubHeading>
+                  {formatCharClass(this.state.adventurer.charClass)}
+                </SubHeading>
+                <KeyText>
+                  Level {this.state.adventurer.level},{" "}
+                  {this.state.adventurer.experience} experience points
+                </KeyText>
+                <LineBreak col={theme.c} />
+                <ListOfLinks>
+                  {this.state.adventurer.quests.map((quest) => {
+                    return (
+                      <li key={quest.id}>
+                        <Link to={`${quest.id}`}>
+                          <ParaText>{quest.title}</ParaText>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ListOfLinks>
+              </div>
+            </ArticleElement>
+          </AdventurerDetailInfoContainer>
         </AdventureDetailedCard>
+        <Router>
+          <JobDetails path=":id" />
+        </Router>
+        <OnRouteChange
+          action={() => {
+            {
+              window.scrollTo(0, 0);
+            }
+          }}
+        />
       </AdventurerDetailPane>
     );
   }

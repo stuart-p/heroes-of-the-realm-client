@@ -7,14 +7,14 @@ import {
   ExplainerContainer,
   ArticleElement,
   ElementTopStripe,
-  NavLinksContainer
+  NavLinksContainer,
 } from "../styles/Containers.style";
 import { Button, ListOfLinks } from "../styles/UI.style";
 import {
   JumboHeading,
   ParaText,
   SubHeading,
-  LineBreak
+  LineBreak,
 } from "../styles/text.style";
 import { Link } from "@reach/router";
 
@@ -26,7 +26,7 @@ const LandingPage = observer(() => {
           <JumboHeading>Heroes of the Realm</JumboHeading>
         </div>
         {auth.loggedIn ? (
-          <Link to="/adventurers">
+          <Link to="/quests">
             <Button>find nearby quests</Button>
           </Link>
         ) : (

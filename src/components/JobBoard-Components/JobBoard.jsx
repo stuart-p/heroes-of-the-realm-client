@@ -19,6 +19,7 @@ import {
 } from "../styles/Containers.style";
 import { formatErrorMessage } from "../../utils/formatting.utils";
 import { toast } from "react-toastify";
+import { OnRouteChange } from "../LandingPage-components/RouteChange";
 
 const JobBoard = observer(
   class JobBoard extends React.Component {
@@ -148,6 +149,13 @@ const JobBoard = observer(
               updateJobBoardOnceBegun={this.optimisticallyUpdateJobDetails}
             />
           </Router>
+          <OnRouteChange
+            action={() => {
+              {
+                window.scrollTo(0, 0);
+              }
+            }}
+          />
         </>
       ) : (
         <Redirect noThrow to="/" />

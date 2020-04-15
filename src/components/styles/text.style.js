@@ -18,7 +18,7 @@ export const SubHeading = styled.h3`
   margin: 0;
   text-align: left;
   max-width: 75ch;
-  ${props =>
+  ${(props) =>
     props.decorative &&
     css`
       font-family: "Cinzel Decorative", cursive;
@@ -27,7 +27,7 @@ export const SubHeading = styled.h3`
       margin: 20px 0 0 0;
     `}
 
-  ${props =>
+  ${(props) =>
     props.color &&
     css`
       color: ${props.color};
@@ -40,7 +40,7 @@ export const SectionHeading = styled.h4`
   font-weight: 700;
   margin: 0;
   text-align: left;
-  ${props =>
+  ${(props) =>
     props.decorative &&
     css`
       font-family: "Cinzel Decorative", cursive;
@@ -49,7 +49,7 @@ export const SectionHeading = styled.h4`
       margin: 20px 0 0 0;
     `}
 
-  ${props =>
+  ${(props) =>
     props.color &&
     css`
       color: ${props.color};
@@ -64,7 +64,7 @@ export const KeyText = styled.h5`
   text-align: left;
   max-width: 75ch;
 
-  ${props =>
+  ${(props) =>
     props.color &&
     css`
       color: ${props.color};
@@ -79,7 +79,7 @@ export const ParaText = styled.p`
   text-align: left;
   max-width: 75ch;
 
-  ${props =>
+  ${(props) =>
     props.color &&
     css`
       color: ${props.color};
@@ -94,7 +94,7 @@ export const DecorativePara = styled.p`
   text-align: left;
   color: ${theme.c};
 
-  ${props =>
+  ${(props) =>
     props.color &&
     css`
       color: ${props.color};
@@ -103,7 +103,7 @@ export const DecorativePara = styled.p`
 
 export const LineBreak = styled.hr`
   border: none;
-  border-top: 2px solid ${theme.c};
+  border-top: 2px solid ${(props) => (props.col ? props.col : theme.c)};
   margin: 5px 0px 5px;
 `;
 
