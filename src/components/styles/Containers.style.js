@@ -301,14 +301,15 @@ export const AdventurerCardListItem = styled.li`
 `;
 
 export const AdventurerDetailPane = styled.main`
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 50;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 `;
 
@@ -317,13 +318,15 @@ export const AdventureDetailedCard = styled.section`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-end;
+  margin-top: 10vh;
   max-width: 95vw;
   height: 80vh;
   max-height: 800px;
   background-color: ${theme.e};
   border-radius: 2vw;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
-
+  position: relative;
+  overflow: hidden;
   ${(props) =>
     props.altBG &&
     css`
@@ -451,5 +454,22 @@ export const QuestCardListItem = styled.li`
     transform: translate(-50%, -14%);
 
     z-index: 2;
+  }
+`;
+
+export const QuestDetiledBanner = styled.section`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 3.2em;
+  background-color: ${(props) => (props.bg ? props.bg : theme.c)};
+  z-index: 0;
+
+  p {
+    z-index: 50;
+    justify-self: flex-start;
   }
 `;

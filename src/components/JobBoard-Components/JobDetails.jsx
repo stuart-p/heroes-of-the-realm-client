@@ -3,8 +3,15 @@ import {
   AdventurerDetailPane,
   FrostedContainer,
   AdventureDetailedCard,
+  ElementTopStripe,
+  QuestDetiledBanner,
 } from "../styles/Containers.style";
-import { StyledLink, ParaText } from "../styles/text.style";
+import {
+  StyledLink,
+  ParaText,
+  SubHeading,
+  KeyText,
+} from "../styles/text.style";
 import { Button } from "../styles/UI.style";
 import { getJob, beginJob } from "../../api/jobBoard.api";
 import {
@@ -51,28 +58,47 @@ class JobDetails extends React.Component {
         <StyledLink to="../">
           <FrostedContainer />
         </StyledLink>
-        <AdventureDetailedCard
-          altBG={
-            this.state.quest.isInProgress
-              ? theme.c
-              : this.state.quest.isComplete
-              ? theme.e
-              : theme.d
-          }
-        >
-          <StyledLink to="../">
-            <ParaText>Back</ParaText>
-          </StyledLink>
-          <h2>Quest detail page</h2>
-          <h4>{this.state.quest.title}</h4>
-          <h4>{this.state.quest.experience} XP</h4>
-          <h4>{formatDurationString(this.state.quest.duration)}</h4>
+        <AdventureDetailedCard altBG={"white"}>
+          <QuestDetiledBanner
+            bg={
+              this.state.quest.isComplete
+                ? "black"
+                : this.state.quest.isInProgress
+                ? theme.d
+                : theme.c
+            }
+          >
+            <KeyText color={"white"}>
+              Status:{" "}
+              {this.state.quest.isComplete
+                ? "Completed"
+                : this.state.quest.isInProgress
+                ? "In Progress"
+                : "Available"}
+            </KeyText>
+            <StyledLink to="../">
+              <Button>Back</Button>
+            </StyledLink>
+          </QuestDetiledBanner>
+          <SubHeading>{this.state.quest.title}</SubHeading>
+          <KeyText>
+            {this.state.quest.experience} experience points, <br />
+            {formatDurationString(this.state.quest.duration)} to complete
+          </KeyText>
           {!this.state.quest.isComplete && !this.state.quest.isInProgress && (
             <Button onClick={this.clickBeginQuest}>begin quest!</Button>
           )}
-          {this.state.quest.isInProgress && <p>in progress!</p>}
           {this.state.quest.isInProgress && (
-            <p>{this.state.quest.assignedUser} on quest</p>
+            <ParaText>
+              in progress! {this.state.quest.assignedUser} on quest.
+            </ParaText>
+          )}
+          {this.state.quest.isComplete && (
+            <ParaText>
+              Quest Completed by {this.state.quest.assignedUser}, <br />
+              on{" "}
+              {new Date(Date.parse(this.state.quest.completed)).toDateString()}.
+            </ParaText>
           )}
         </AdventureDetailedCard>
       </AdventurerDetailPane>
