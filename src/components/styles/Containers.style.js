@@ -473,3 +473,63 @@ export const QuestDetiledBanner = styled.section`
     justify-self: flex-start;
   }
 `;
+
+export const EditDetailsSection = styled.section`
+  width: 97%;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 3.2em 0;
+
+  figure {
+    max-width: 50%;
+    border-radius: 2vw;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+      0 3px 6px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  div form {
+    padding: 10px 10px;
+    margin: 5px 0;
+    background-color: ${theme.d};
+
+    label {
+      color: white;
+    }
+    label input {
+      border: none;
+      border-radius: 2px;
+      font-family: "Raleway", sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 5px 20px;
+      margin: 0;
+      text-align: left;
+      color: black;
+      box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+        0 3px 6px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    label select {
+      border: none;
+      border-radius: 2px;
+      font-family: "Raleway", sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 5px 20px;
+      margin: 0;
+      text-align: left;
+      color: black;
+      box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3),
+        0 3px 6px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
+    }
+  }
+`;

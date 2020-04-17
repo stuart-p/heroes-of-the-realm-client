@@ -20,3 +20,15 @@ export const getAdventurer = (id) => {
       return { adventurer: res.data };
     });
 };
+
+export const updateProfileDetails = (userProfileChanges) => {
+  const id = auth.userID;
+  return axios
+    .put(baseURL + id, userProfileChanges, {
+      headers: { authorization: `bearer ${auth.token}` },
+    })
+    .then((res) => {
+      console.log(res);
+      return;
+    });
+};

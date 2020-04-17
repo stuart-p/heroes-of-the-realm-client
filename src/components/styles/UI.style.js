@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "./themes";
 
 export const Button = styled.button`
@@ -11,12 +11,33 @@ export const Button = styled.button`
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
   font-size: 1.3em;
   transition: all 0.5s ease;
-  &:hover {
+  &:hover:enabled {
     background: ${theme.c};
   }
-  &:active {
+  &:active:enabled {
     background: ${theme.b};
   }
+
+  ${(props) =>
+    props.arrow &&
+    css`
+      margin: 0;
+      padding: 15px 5px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    `}
+   ${(props) =>
+     props.previous &&
+     css`
+       left: 0;
+     `}
+      ${(props) =>
+        props.next &&
+        css`
+          right: 0px;
+        `}
+  
 `;
 
 export const AuthForm = styled.form`

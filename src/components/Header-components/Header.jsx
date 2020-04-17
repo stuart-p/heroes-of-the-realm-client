@@ -80,6 +80,9 @@ const Header = observer(
               <Link to="/" onClick={this.hideNavMenu}>
                 <ParaText>Home</ParaText>
               </Link>
+              <Link to="/profile" onClick={this.hideNavMenu}>
+                <ParaText>Edit Profile</ParaText>
+              </Link>
               <Link to="/adventurers" onClick={this.hideNavMenu}>
                 <ParaText>Adventurer Rankings</ParaText>
               </Link>

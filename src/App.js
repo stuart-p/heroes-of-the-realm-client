@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import JobBoard from "./components/JobBoard-Components/JobBoard";
 import AdventurerRankingPage from "./components/AdventurerRanking/AdventurerRankingPage";
+import AdventurerEditPage from "./components/AdventurerRanking/AdventurerEditPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <LandingPage path="/" />
         <JobBoard path="/quests/*" />
         <AdventurerRankingPage path="/adventurers/*" />
+        <AdventurerEditPage path="/profile" />
       </Router>
     </>
   );
