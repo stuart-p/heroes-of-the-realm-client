@@ -164,6 +164,16 @@ export const ExplainerContainer = styled.section`
   justify-content: space-around;
   align-items: flex-start;
   margin: 0 5vw;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+
+    aside {
+      margin: 0;
+      width: 70vw;
+    }
+  }
 `;
 
 export const ArticleElement = styled.div`
@@ -215,8 +225,21 @@ export const AdventurerRankingList = styled.ul`
   grid-template-columns: repeat(5, 1fr);
   transform-origin: top left;
   transform: skewY(7deg);
-  margin: 4vw 20% 0 2%;
+  margin: 6vw 18% 0 2%;
+  padding: 0;
   list-style-type: none;
+
+  @media only screen and (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const AdventurerCardListItem = styled.li`
@@ -226,7 +249,7 @@ export const AdventurerCardListItem = styled.li`
   z-index: 1;
   transition-property: z-index;
   transition-duration: 0.3s;
-  margin: 0 2vw 0 0;
+  margin: 0 2.5vw 0 0;
 
   div {
     position: absolute;
@@ -291,6 +314,10 @@ export const AdventurerCardListItem = styled.li`
   }
   &:hover div {
     transform: rotateZ(14deg) translate(0%, 10%) scale(1.6);
+
+    @media only screen and (max-width: 900px) {
+      transform: rotate(14deg) translate(0, 10%) scale(1);
+    }
   }
   &:hover img {
     height: 180%;
@@ -311,6 +338,7 @@ export const AdventurerDetailPane = styled.main`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  max-width: 100vw;
 `;
 
 export const AdventureDetailedCard = styled.section`
@@ -354,6 +382,27 @@ export const AdventurerDetailInfoContainer = styled.section`
       height: auto;
     }
   }
+
+  @media only screen and (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+
+    figure {
+      max-width: 90%;
+      max-height: 50%;
+
+      img {
+        height: 100%;
+        object-fit: cover;
+        margin: 0 auto;
+      }
+    }
+
+    ${ArticleElement} {
+      max-height: 50%;
+      width: 90%;
+    }
+  }
 `;
 
 export const QuestListContainter = styled.section`
@@ -365,6 +414,14 @@ export const ActiveQuestsList = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   list-style-type: none;
+  padding: 0;
+
+  @media only screen and (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const QuestCardListItem = styled.li`
@@ -481,7 +538,7 @@ export const EditDetailsSection = styled.section`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin: 3.2em 0;
+  margin: 3.2em 0 1.5em 0;
 
   figure {
     max-width: 50%;
@@ -493,6 +550,25 @@ export const EditDetailsSection = styled.section`
     img {
       width: 100%;
       height: auto;
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+
+    figure {
+      max-height: 40%;
+      max-width: 90%;
+
+      img {
+        height: 100%;
+        object-fit: cover;
+        margin: 0 auto;
+      }
+    }
+    ${ArticleElement} {
+      max-height: 40%;
+      width: 90%;
     }
   }
 

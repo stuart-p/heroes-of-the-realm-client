@@ -53,7 +53,8 @@ const LandingPage = observer(() => {
                 This is a portfolio piece created by Stuart Palmer in March
                 2020, as a demonstration tool for .NET Core, JWT authentication,
                 and MobX state management. Please feel free to browse my other
-                work or contact me through my portfolio page HERE.
+                work or contact me through my portfolio page{" "}
+                <a href="https://stuart-p.github.io">HERE</a>.
               </ParaText>
             </div>
           </ArticleElement>
@@ -65,7 +66,7 @@ const LandingPage = observer(() => {
                 Heroes of the Realm allows users to sign-up and login to a jobs
                 board-style website, modelled as Fantasty Realms/D&D adventuring
                 quests. Users can customise their profile, and can then select
-                to complete the quests and receive profile 'experience' based on
+                to complete quests and receive profile 'experience' based on
                 this.
               </ParaText>
             </div>
@@ -80,11 +81,18 @@ const LandingPage = observer(() => {
                 single-page-application routing. MobX was used for state
                 management, including the session storage of JWT access
                 privilages once the user has logged in. The source code can be
-                found HERE.
+                found{" "}
+                <a href="https://github.com/stuart-p/heroes-of-the-realm-client">
+                  HERE
+                </a>
+                .
                 <br />
-                The back-end is a .NET Core 3.1 server, with an SQLite database.
-                It is hosted on an Azure server. The source code can be found
-                HERE.
+                The back-end is a .NET Core 3.1 server, with an MySQL database.
+                It is hosted on an Azure server. The source code can be found{" "}
+                <a href="https://github.com/stuart-p/heroes-of-the-realm-server">
+                  HERE
+                </a>
+                .
               </ParaText>
             </div>
           </ArticleElement>
@@ -99,17 +107,17 @@ const LandingPage = observer(() => {
               </a>
             </li>
             <li>
-              <a href="https://stuart-p.github.io">
+              <a href="https://github.com/stuart-p/">
                 <ParaText>GitHub</ParaText>
               </a>
             </li>
             <li>
-              <a href="https://stuart-p.github.io">
+              <a href="https://www.linkedin.com/in/stuart-palmer-a0686139/">
                 <ParaText>Linkedin</ParaText>
               </a>
             </li>
             <li>
-              <a href="https://stuart-p.github.io">
+              <a href="https://twitter.com/StuartDPalmer">
                 <ParaText>Twitter</ParaText>
               </a>
             </li>

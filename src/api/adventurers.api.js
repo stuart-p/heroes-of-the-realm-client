@@ -7,7 +7,6 @@ export const getAdventurers = () => {
   return axios
     .get(baseURL, { headers: { authorization: `bearer ${auth.token}` } })
     .then((res) => {
-      console.log(res);
       return { adventurers: res.data };
     });
 };
@@ -16,7 +15,6 @@ export const getAdventurer = (id) => {
   return axios
     .get(baseURL + id, { headers: { authorization: `bearer ${auth.token}` } })
     .then((res) => {
-      console.log(res);
       return { adventurer: res.data };
     });
 };
@@ -28,7 +26,6 @@ export const updateProfileDetails = (userProfileChanges) => {
       headers: { authorization: `bearer ${auth.token}` },
     })
     .then((res) => {
-      console.log(res);
       return;
     });
 };

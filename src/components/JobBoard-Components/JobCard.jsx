@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  StyledLink,
-  SectionHeading,
-  KeyText,
-  DecorativePara,
-} from "../styles/text.style";
+import { StyledLink, SectionHeading, KeyText } from "../styles/text.style";
 import { formatDurationString } from "../../utils/formatting.utils";
 import {
   QuestCardListItem,

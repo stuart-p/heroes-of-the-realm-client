@@ -84,6 +84,14 @@ export const ParaText = styled.p`
     css`
       color: ${props.color};
     `}
+
+  a {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: ${theme.d};
+    text-decoration: none;
+  }
 `;
 
 export const DecorativePara = styled.p`

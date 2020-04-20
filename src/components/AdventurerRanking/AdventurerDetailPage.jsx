@@ -9,7 +9,6 @@ import {
   AdventurerDetailPane,
   FrostedContainer,
   AdventureDetailedCard,
-  ExplainerContainer,
   ArticleElement,
   ElementTopStripe,
   AdventurerDetailInfoContainer,
@@ -18,7 +17,6 @@ import {
   StyledLink,
   ParaText,
   SubHeading,
-  SectionHeading,
   KeyText,
   LineBreak,
 } from "../styles/text.style";
@@ -102,9 +100,7 @@ class AdventurerDetailPage extends React.Component {
         </Router>
         <OnRouteChange
           action={() => {
-            {
-              window.scrollTo(0, 0);
-            }
+            window.scrollTo(0, 0);
           }}
         />
       </AdventurerDetailPane>

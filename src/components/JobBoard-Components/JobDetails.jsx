@@ -3,7 +3,6 @@ import {
   AdventurerDetailPane,
   FrostedContainer,
   AdventureDetailedCard,
-  ElementTopStripe,
   QuestDetiledBanner,
 } from "../styles/Containers.style";
 import {
@@ -45,6 +44,7 @@ class JobDetails extends React.Component {
       .then(({ quest }) => {
         this.props.updateJobBoardOnceBegun(quest.id);
         this.setState({ quest });
+        toast.success("Quest has begun!");
       })
       .catch((err) => {
         const errorMsg = formatErrorMessage(err);

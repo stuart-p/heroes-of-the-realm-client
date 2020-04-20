@@ -69,43 +69,45 @@ const Header = observer(
     render() {
       return (
         <HeaderContainer>
-          <HeaderIcon navShowing={this.state.navMenuShown}>
-            <button onClick={this.toggleNavMenu}>
-              <DecorativePara color={"white"}>
-                heroes of the realm
-              </DecorativePara>
-              <i className="fas fa-bars fa-lg"></i>
-            </button>
-            <NavMenu>
-              <Link to="/" onClick={this.hideNavMenu}>
-                <ParaText>Home</ParaText>
-              </Link>
-              <Link to="/profile" onClick={this.hideNavMenu}>
-                <ParaText>Edit Profile</ParaText>
-              </Link>
-              <Link to="/adventurers" onClick={this.hideNavMenu}>
-                <ParaText>Adventurer Rankings</ParaText>
-              </Link>
-              <Link to="/quests" onClick={this.hideNavMenu}>
-                <ParaText>Quest Board</ParaText>
-              </Link>
-            </NavMenu>
-          </HeaderIcon>
-          <HeaderButtonBox>
-            {auth.loggedIn && (
-              <PopupBox>
-                <ParaText color={"white"}>Hi, {auth.username}!</ParaText>
-              </PopupBox>
-            )}
-            {auth.loggedIn ? (
-              <Button onClick={this.logOutUser}>Log Out</Button>
-            ) : (
+          {auth.loggedIn ? (
+            <>
+              <HeaderIcon navShowing={this.state.navMenuShown}>
+                <button onClick={this.toggleNavMenu}>
+                  <DecorativePara color={"white"}>
+                    heroes of the realm
+                  </DecorativePara>
+                  <i className="fas fa-bars fa-lg"></i>
+                </button>
+                <NavMenu>
+                  <Link to="/" onClick={this.hideNavMenu}>
+                    <ParaText>Home</ParaText>
+                  </Link>
+                  <Link to="/profile" onClick={this.hideNavMenu}>
+                    <ParaText>Edit Profile</ParaText>
+                  </Link>
+                  <Link to="/adventurers" onClick={this.hideNavMenu}>
+                    <ParaText>Adventurer Rankings</ParaText>
+                  </Link>
+                  <Link to="/quests" onClick={this.hideNavMenu}>
+                    <ParaText>Quest Board</ParaText>
+                  </Link>
+                  <Link to="#" onClick={this.logOutUser}>
+                    <ParaText>Log Out</ParaText>
+                  </Link>
+                </NavMenu>
+              </HeaderIcon>
+              {auth.loggedIn && (
+                <PopupBox>
+                  <ParaText color={"white"}>Hi, {auth.username}!</ParaText>
+                </PopupBox>
+              )}
+            </>
+          ) : (
+            <HeaderButtonBox>
               <Button onClick={this.toggleLogin}>Log in</Button>
-            )}
-            {!auth.loggedIn && (
               <Button onClick={this.toggleRegister}>Register</Button>
-            )}
-          </HeaderButtonBox>
+            </HeaderButtonBox>
+          )}
           <CSSTransition
             in={this.state.loginFormShown}
             timeout={500}

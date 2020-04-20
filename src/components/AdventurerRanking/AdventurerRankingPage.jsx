@@ -72,9 +72,7 @@ const AdventurerRankingPage = observer(
           </Router>
           <OnRouteChange
             action={() => {
-              {
-                window.scrollTo(0, 0);
-              }
+              window.scrollTo(0, 0);
             }}
           />
         </>

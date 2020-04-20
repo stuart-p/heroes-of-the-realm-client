@@ -5,7 +5,7 @@ import { Button, AuthForm } from "../styles/UI.style";
 import { toast } from "react-toastify";
 import { logOut } from "../../stores/auth";
 import { formatErrorMessage } from "../../utils/formatting.utils";
-import { redirectTo, navigate } from "@reach/router";
+import { navigate } from "@reach/router";
 
 class LoginForm extends Component {
   state = {
