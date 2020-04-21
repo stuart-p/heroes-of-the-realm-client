@@ -8,7 +8,7 @@ import {
 } from "../stores/auth";
 import jwt_decode from "jwt-decode";
 
-const baseURL = "http://localhost:5000/api/auth/";
+const baseURL = "api/auth/";
 
 export const loginRequest = (username, password) => {
   return axios.post(baseURL + `login`, { username, password }).then((res) => {

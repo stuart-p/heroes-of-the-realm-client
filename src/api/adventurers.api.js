@@ -1,7 +1,7 @@
 import axios from "axios";
 import { auth } from "../stores/auth";
 
-const baseURL = "http://localhost:5000/api/users/";
+const baseURL = "api/users/";
 
 export const getAdventurers = () => {
   return axios
