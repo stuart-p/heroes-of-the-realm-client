@@ -41,4 +41,5 @@ export const logOut = action(() => {
 export const setTimeStamp = action((serverTime) => {
   timeStamp.timeStamp = Date.parse(serverTime);
   timeStamp.timeDeltaSeconds = (timeStamp.timeStamp - Date.now()) / 1000;
+  console.log(timeStamp.timeDeltaSeconds);
 });

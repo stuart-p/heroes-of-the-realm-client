@@ -1,7 +1,7 @@
 import axios from "axios";
 import { auth } from "../stores/auth";
 
-const baseURL = "api/avatar/";
+const baseURL = "/api/avatar/";
 
 export const requestNextAvatarURL = (currentURL, isNext) => {
   return axios

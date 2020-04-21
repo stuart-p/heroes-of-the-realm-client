@@ -1,7 +1,7 @@
 import axios from "axios";
 import { auth } from "../stores/auth";
 
-const baseURL = "api/users/";
+const baseURL = "/api/users/";
 
 export const getAdventurers = () => {
   return axios

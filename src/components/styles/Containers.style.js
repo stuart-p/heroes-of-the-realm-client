@@ -285,6 +285,7 @@ export const AdventurerCardListItem = styled.li`
     bottom: 3.5%;
     right: 5%;
     padding: 5px 5px;
+    font-size: 1.8rem;
   }
   figure {
     position: absolute;

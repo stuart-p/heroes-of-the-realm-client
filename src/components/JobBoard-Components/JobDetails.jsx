@@ -26,8 +26,13 @@ class JobDetails extends React.Component {
   };
 
   componentDidMount = () => {
+    console.log(
+      "Jobdetails.jsx. This is the supposed this.props.id value: ",
+      this.props.id
+    );
     getJob(this.props.id)
       .then(({ quest }) => {
+        console.log(quest);
         this.setState({ quest });
       })
       .catch((err) => {

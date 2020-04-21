@@ -1,7 +1,7 @@
 import axios from "axios";
 import { auth } from "../stores/auth";
 
-const baseURL = "api/quest/";
+const baseURL = "/api/quest/";
 
 export const getJobs = () => {
   return axios
@@ -9,24 +9,32 @@ export const getJobs = () => {
       headers: { authorization: `bearer ${auth.token}` },
     })
     .then((res) => {
+      console.log(res);
       return { quests: res.data };
     });
 };
 
 export const getJob = (id) => {
+  console.log(id);
   return axios
     .get(baseURL + id, { headers: { authorization: `bearer ${auth.token}` } })
     .then((res) => {
+      console.log(res);
       return { quest: res.data };
     });
 };
 
 export const beginJob = (id) => {
-  return axios.patch(
-    `${baseURL}${id}/begin`,
-    { UserID: auth.userID },
-    { headers: { authorization: `bearer ${auth.token}` } }
-  );
+  return axios
+    .patch(
+      `${baseURL}${id}/begin`,
+      { UserID: auth.userID },
+      { headers: { authorization: `bearer ${auth.token}` } }
+    )
+    .then((res) => {
+      console.log(res);
+      return;
+    });
 };
 
 export const requestCreateNewQuest = () => {
@@ -38,7 +46,6 @@ export const requestCreateNewQuest = () => {
 };
 
 export const requestQuestCompletion = (id) => {
-  console.log(auth.token);
   return axios.patch(
     `${baseURL}${id}/complete`,
     {},
