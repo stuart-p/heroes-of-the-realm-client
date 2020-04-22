@@ -9,17 +9,16 @@ export const getJobs = () => {
       headers: { authorization: `bearer ${auth.token}` },
     })
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       return { quests: res.data };
     });
 };
 
 export const getJob = (id) => {
-  console.log(id);
   return axios
     .get(baseURL + id, { headers: { authorization: `bearer ${auth.token}` } })
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       return { quest: res.data };
     });
 };
@@ -32,7 +31,7 @@ export const beginJob = (id) => {
       { headers: { authorization: `bearer ${auth.token}` } }
     )
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       return;
     });
 };

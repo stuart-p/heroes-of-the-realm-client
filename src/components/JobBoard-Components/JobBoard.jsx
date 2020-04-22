@@ -32,7 +32,7 @@ const JobBoard = observer(
       const requestsForCompletions = [];
       quests.forEach((quest) => {
         if (quest.completed !== null) {
-          let completionTime = Date.parse(quest.completed);
+          let completionTime = Date.parse(quest.completed + "+00:00");
           completionTime += timeStamp.timeDeltaSeconds * 1000;
           if (completionTime - Date.now() < 0) {
             requiredNewQuests = Math.min(6, requiredNewQuests++);

@@ -44,7 +44,7 @@ const JobCard = observer(
 
     calcProgress = () => {
       const { duration, started } = this.props;
-      const timeStarted = Date.parse(started);
+      const timeStarted = Date.parse(started + "+00:00");
       const timeSpent = (Date.now() - timeStarted) / 1000 || 0;
       const percentage = Math.floor((timeSpent / duration) * 100, 100);
       const timeRemaining = Math.round(duration - timeSpent);

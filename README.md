@@ -1,42 +1,34 @@
 # **HEROES OF THE REALM**
 
-**[ Web app can be accessed at: https://saw-it-here-first.netlify.com](https://saw-it-here-first.netlify.com)**
+**[ Web app can be accessed at: https://heroes-of-the-realm.azurewebsites.net](https://heroes-of-the-realm.azurewebsites.net)**
 
-## A news and comment website not too dissimilar from REDDIT...
+## A Jobs board for Adventurers in a fantasy land...
 
-<img src='src/images/mobileMode.png' alt="screenshot" height='400'/>
+<img src='src/assets/heroQuestsPreview.png' alt="screenshot"/>
 
-This is the source code for the front-end portion of my portfolio project; SAW-IT. This website can be used to post comments and articles on various topics, in a similar fashion to REDDIT. Articles and comments can be 'applauded' to indicate enjoyment of the post.
+This is the source code for the front-end portion of my portfolio project; Heroes Of the Realm. This site is a modern re-imagining of an fantasy-world Adventurers Guild; where heroes may hear about quests that they can go on. Heroes can select a quest from the board, and after waiting for the quest to be completed, 'experience points' will be provided to you, thus increasing your Adventure Rank.
 
-Front-end is **REACT.js**, with @Reach router for Single-Page-Application routing, Axios for backend API requests, and Styled-Components for CSS/HTML management.
+The front-end is **REACT.js**, deployed through the backend's Kestrel web server. MobX is used for state management, including the storage of JWT session keys. CSS is managed through Styled Components.
 
-Back-end is **Node.js Express server**, with a **PostgreSQL** database. The source code for the back-end can be viewed at [https://github.com/stuart-p/sawit-server](https://github.com/stuart-p/sawit-server), and a live instance of the server can interrogated at [https://sawit-server.herokuapp.com/api](https://sawit-server.herokuapp.com/api)
+The back-end is a **C# .NET Core** server, with a **SQL Server** database. The source code for the back-end can be viewed at [https://github.com/stuart-p/heroes-of-the-realm-server](https://github.com/stuart-p/heroes-of-the-realm-server). The API can be interrogated direction using the following enpoint: [https://heroes-of-the-realm.azurewebsites.net/api](https://heroes-of-the-realm.azurewebsites.net/api)
 
 ## Getting Started (usage)
 
-The website can be accessed using a web browser to visit the site [here](https://saw-it-here-first.netlify.com). It has been optimised for mobile usage, but can be viewed on desktop also.
+The website can be accessed using a web browser to visit the site [here](https://heroes-of-the-realm.azurewebsites.net). It has been optimised for mobile usage, but can be viewed on desktop also.
 
-The following pages and functionality is currently available:
+### Pages and Functions
 
-```
-https://saw-it-here-first.netlify.com
-├── * (Header nav bar. Goto landing page, visit portfolio, browse all topics)
+A Login/register element is displayed if the user is not currently logged in. Once logged in this will be replaced by the nav bar.
 
-├── / (view all articles, sort and order all articles, applaud articles)
-      ├── /about (general outline of project)
-      ├── /topic
-            ├──/topic_name (view articles on a topic, sort articles, applaud articles, add articles, delete articles)
-                  ├── /article
-                        ├──/article_id (view specific article details, view comments on an article, delete your own comments, add new comments, vote on comments)
-```
+A drop-down header bar is present on all pages, and can be used for core navigation of the site. Pressing the bar displays the nav menu, which includes a link to the landing page, edit profile, adventure ranking, quests and logout.
 
-A Header bar is present on all pages, and can be used for core navigation of the site. Pressing the arrow buttons displays the nav menu, which includes a list of all topics on the database, as well as links to the landing page, about page and an external link to my portfolio site.
+The main landing page displays a brief introduction to the site, and links to the Github repositories. It can be navigated to via the 'home' button on the header bar.
 
-The main landing page displays all articles on the database, and these can be ordered according to creation date, comment count and vote count. The data from the server is paginated, and this can be navigated using the arrow buttons at the bottom of the page.
+The 'edit profile' page can be used to modify your adventurer profile on the site. Name, type of adventurer, and profile picture can all be changed and saved.
 
-The topic page shows all articles relating to a specific topic. Again, these can be sorted and paginated through. Clicking on an article card will bring up the article page. New articles can be added using the 'Add Article' button in the footer. You can delete your own comments using the trash icon on the article.
+The 'Adventurer ranking' page can be used to view list of all registered users of the site. Results are ordered according to adventuring experience level. Selecting an adventurer's card will bring up more detailed information for that particular adventurer, including a list of all their completed quests.
 
-The Article page shows all comments relating to a specific article. Comments can be added to the database using the 'Add Comment' button in the footer, and you can delete your own comments using the trash can icon on the comment.
+The 'Quests' page can be used to view all the currently-active quests on the jobs board. Selecting a quest card brings up additional information about the quest, and allows the user to 'begin' the quest if they choose. Once a quest is begun, it will countdown to its completion time, upon which experience will be awarded to your profile. Only one quest can be undertaken at once.
 
 ## Getting Started (development)
 
@@ -48,23 +40,18 @@ this project requires `NODE.js`, minimum version: V12. It has the following depe
 
 ```
 production:
-react: ^16.12.0
-@reach/router: ^1.3.1
-axios: ^0.19.2
-classnames: ^2.2.6
-styled-components: ^5.0.1
-react-app-rewired: ^2.1.5
-react-app-rewire-styled-components: ^3.0.2
+    @reach/router: ^1.3.3
+    axios: ^0.19.2
+    jwt-decode: ^2.2.0
+    mobx: ^5.15.4
+    mobx-react: ^6.1.8
+    react: ^16.13.1
+    react-dom: ^16.13.1
+    react-scripts: ^3.4.1
+    react-toastify: ^5.5.0
+    react-transition-group: ^4.3.0
+    styled-components: ^5.0.1
 ```
-
-### Installation
-
-to install:
-
-- using your favourite command line interface (CLI) application, navigate to your preferred installation location, and run `git clone https://github.com/stuart-p/Saw-It.git`
-- Navigate to the created folder using `cd Saw-It`, and open with your favourite software development environment
-- run `npm install` to automatically install all dependencies
-- run `npm start` to launch a locally-hosted instance of the web app. This will open automaticlly in your default web browser, however you can also open up the webpage manually by navigating to `http://localhost:3000/`
 
 ## Built with
 
@@ -72,4 +59,4 @@ This project was built with VSCode, using Javascript and the React.js front-end 
 
 ## Author
 
-This project was built by **Stuart Palmer** while studying at _NorthCoders_, in February 2020.
+This project was built by **Stuart Palmer** as a demonstration of JWT access tokens in March 2020.
