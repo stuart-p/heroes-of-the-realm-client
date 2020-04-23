@@ -78,7 +78,7 @@ const Header = observer(
                   </DecorativePara>
                   <i className="fas fa-bars fa-lg"></i>
                 </button>
-                <NavMenu>
+                <NavMenu navShowing={this.state.navMenuShown}>
                   <Link to="/" onClick={this.hideNavMenu}>
                     <ParaText>Home</ParaText>
                   </Link>

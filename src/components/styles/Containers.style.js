@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import theme from "./themes";
+import { SubHeading } from "./text.style";
 
 export const HeaderContainer = styled.header`
   position: fixed;
@@ -39,7 +40,7 @@ export const HeaderIcon = styled.div`
     font-size: 1em;
     transition: all 0.5s ease;
     padding: 5px 10px 0 0;
-
+    height: 2.5em;
     i {
       padding: 0px 5px 5px;
       margin: auto 0;
@@ -60,7 +61,7 @@ export const HeaderIcon = styled.div`
 `;
 
 export const NavMenu = styled.nav`
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -83,6 +84,12 @@ export const NavMenu = styled.nav`
       background: ${theme.b};
     }
   }
+
+  ${(props) =>
+    props.navShowing &&
+    css`
+      display: flex;
+    `}
 `;
 
 export const HeaderButtonBox = styled.menu`
@@ -98,17 +105,17 @@ export const Jumbo = styled.section`
   width: 100%;
   background-size: cover;
   background-position-y: center;
-  height: 90vh;
+  height: 80vh;
   max-height: 850px;
 
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   transition: all 0.5s ease;
   .jumboHeadingContainer {
-    margin: 10vh 0 0 0;
+    margin: 6rem 0 0 0;
     max-width: 600px;
     align-self: flex-start;
   }
@@ -116,12 +123,15 @@ export const Jumbo = styled.section`
     color: white;
     padding: 10px 5px;
     z-index: 1;
-    /* margin-top: auto; */
+    margin-top: auto;
     position: relative;
+    justify-self: flex-end;
   }
 
-  button {
+  a {
+    margin-top: auto;
     align-self: center;
+    justify-self: flex-end;
   }
 `;
 
@@ -164,10 +174,12 @@ export const ExplainerContainer = styled.section`
   justify-content: space-around;
   align-items: flex-start;
   margin: 0 5vw;
+  height: max-content;
 
   @media only screen and (max-width: 600px) {
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
 
     aside {
       margin: 0;
@@ -187,6 +199,13 @@ export const ArticleElement = styled.div`
   .onTop {
     position: relative;
     z-index: 50;
+
+    ${SubHeading} {
+      @media only screen and (max-width: 600px) {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+      }
+    }
   }
 
   ${(props) =>

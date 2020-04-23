@@ -46,7 +46,7 @@ const AdventurerRankingPage = observer(
                 <ElementTopStripe />
                 <div className="onTop">
                   <SubHeading color={"white"}>
-                    The greatest heroes in the land!
+                    The heroes of the realm!
                   </SubHeading>
                   <ParaText>
                     Welcome to the league of heroes! Here you will find details
