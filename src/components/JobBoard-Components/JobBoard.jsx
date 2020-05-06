@@ -76,16 +76,21 @@ const JobBoard = observer(
     };
 
     optimisticallyCompleteJob = (id) => {
-      this.setState((currentState) => {
-        const updatedQuestsWithComplete = currentState.quests.map((quest) => {
-          if (quest.id === id) {
-            quest.isInProgress = false;
-            quest.isComplete = true;
-          }
-          return quest;
-        });
-        return { quests: updatedQuestsWithComplete };
-      });
+      this.setState(
+        (currentState) => {
+          const updatedQuestsWithComplete = currentState.quests.map((quest) => {
+            if (quest.id === id) {
+              quest.isInProgress = false;
+              quest.isComplete = true;
+            }
+            return quest;
+          });
+          return { quests: updatedQuestsWithComplete };
+        },
+        () => {
+          requestQuestCompletion(id);
+        }
+      );
     };
 
     componentDidMount = () => {
