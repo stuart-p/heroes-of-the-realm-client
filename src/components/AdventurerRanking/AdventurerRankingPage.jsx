@@ -14,6 +14,7 @@ import {
 } from "../styles/Containers.style";
 import AdventurerCard from "./AdventurerCard";
 import { toast } from "react-toastify";
+import { setLoad } from "../../stores/load";
 import { formatErrorMessage } from "../../utils/formatting.utils";
 import { OnRouteChange } from "../LandingPage-components/RouteChange";
 
@@ -24,12 +25,15 @@ const AdventurerRankingPage = observer(
     };
 
     componentDidMount = () => {
+      setLoad(true);
       getAdventurers()
         .then(({ adventurers }) => {
+          setLoad(false);
           this.setState({ adventurers });
         })
         .catch((err) => {
           console.log(err);
+          setLoad(false);
           const msg = formatErrorMessage(err);
           toast.error(`Err. ${msg}`);
         });

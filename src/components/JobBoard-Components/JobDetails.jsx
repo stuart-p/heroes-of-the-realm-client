@@ -19,6 +19,7 @@ import {
 } from "../../utils/formatting.utils";
 import theme from "../styles/themes";
 import { toast } from "react-toastify";
+import { setLoad } from "../../stores/load";
 
 class JobDetails extends React.Component {
   state = {
@@ -26,11 +27,14 @@ class JobDetails extends React.Component {
   };
 
   componentDidMount = () => {
+    setLoad(true);
     getJob(this.props.id)
       .then(({ quest }) => {
+        setLoad(false);
         this.setState({ quest });
       })
       .catch((err) => {
+        setLoad(false);
         const errorMsg = formatErrorMessage(err);
         toast.error(`Error. ${errorMsg}`);
       });

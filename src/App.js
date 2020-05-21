@@ -1,4 +1,6 @@
 import React from "react";
+import { Observer } from "mobx-react";
+import { status } from "./stores/load";
 import { Router } from "@reach/router";
 import "./App.css";
 import Header from "./components/Header-components/Header";
@@ -8,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import JobBoard from "./components/JobBoard-Components/JobBoard";
 import AdventurerRankingPage from "./components/AdventurerRanking/AdventurerRankingPage";
 import AdventurerEditPage from "./components/AdventurerRanking/AdventurerEditPage";
+import LoadingScreen from "./components/UI-components/LoadingScreen";
 
 function App() {
   return (
@@ -24,6 +27,7 @@ function App() {
         draggable={false}
         className="standardToastStyle"
       />
+      <Observer>{() => status.isLoading && <LoadingScreen />}</Observer>
       <Router className="main">
         <LandingPage path="/" />
         <JobBoard path="/quests/*" />

@@ -2,6 +2,7 @@ import React from "react";
 import { ParaText, SubHeading, LineBreak } from "../styles/text.style";
 import { observer } from "mobx-react";
 import { auth, timeStamp } from "../../stores/auth";
+import { setLoad } from "../../stores/load";
 import { Redirect, Router } from "@reach/router";
 import {
   getJobs,
@@ -94,13 +95,16 @@ const JobBoard = observer(
     };
 
     componentDidMount = () => {
+      setLoad(true);
       getJobs()
         .then(({ quests }) => {
+          setLoad(false);
           this.checkForCompletedQuestsAndPrune(quests);
           // this.setState({ quests });
         })
         .catch((err) => {
           const errorMsg = formatErrorMessage(err);
+          setLoad(false);
           toast.error(`Error. ${errorMsg}`);
         });
     };

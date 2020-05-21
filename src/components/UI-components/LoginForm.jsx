@@ -4,6 +4,7 @@ import { LoginContainer } from "../styles/Containers.style";
 import { Button, AuthForm } from "../styles/UI.style";
 import { toast } from "react-toastify";
 import { logOut } from "../../stores/auth";
+import { setLoad } from "../../stores/load";
 import { formatErrorMessage } from "../../utils/formatting.utils";
 import { navigate } from "@reach/router";
 
@@ -19,14 +20,17 @@ class LoginForm extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
+    setLoad(true);
     loginRequest(this.state.username, this.state.password)
       .then(() => {
+        setLoad(false);
         toast.success("logged in!");
         this.props.hideOnSucess();
         navigate("/quests");
       })
       .catch((err) => {
         const errorMsg = formatErrorMessage(err);
+        setLoad(false);
         toast.error(`Error. ${errorMsg}`);
         logOut();
       });

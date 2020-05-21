@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Heroes of the Realm",
+  "name": "Find your quests with Heroes of the Realm",
   "icons": [
     {
       "src": "favicon.ico",

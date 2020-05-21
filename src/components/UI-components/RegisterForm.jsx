@@ -4,7 +4,9 @@ import { LoginContainer } from "../styles/Containers.style";
 import { Button, AuthForm, PopupBox } from "../styles/UI.style";
 import { toast } from "react-toastify";
 import { logOut } from "../../stores/auth";
+import { setLoad } from "../../stores/load";
 import { formatErrorMessage } from "../../utils/formatting.utils";
+import { navigate } from "@reach/router";
 
 class RegisterForm extends Component {
   state = {
@@ -65,22 +67,30 @@ class RegisterForm extends Component {
     event.preventDefault();
     const usernameValid = this.checkUsernameIsValid(this.state.username);
     const passwordValid = this.checkPasswordIsValid(this.state.password);
-    usernameValid &&
-      passwordValid &&
+    if (usernameValid && passwordValid) {
+      setLoad(true);
       registerRequest(this.state.username, this.state.password)
         .then((registeredUserDetails) => {
+          setLoad(false);
           toast.success("registered new account!");
           this.props.hideOnSucess();
           return registeredUserDetails;
         })
         .then(({ username, password }) => {
-          loginRequest(username, password);
+          setLoad(true);
+          loginRequest(username, password).then(() => {
+            setLoad(false);
+            toast.success("logged in!");
+            navigate("/quests");
+          });
         })
         .catch((err) => {
           const errorMessage = formatErrorMessage(err);
+          setLoad(false);
           toast.error(`Error. ${errorMessage}`);
           logOut();
         });
+    }
     this.setState({ username: "", password: "" });
   };
 
@@ -103,7 +113,7 @@ class RegisterForm extends Component {
             <label>
               password:
               <input
-                type="text"
+                type="password"
                 name="password"
                 onChange={this.onChange}
                 value={this.state.password}

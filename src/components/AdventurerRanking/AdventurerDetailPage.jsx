@@ -24,6 +24,7 @@ import { Button, ListOfLinks } from "../styles/UI.style";
 import { toast } from "react-toastify";
 import theme from "../styles/themes";
 import { Router, Link } from "@reach/router";
+import { setLoad } from "../../stores/load";
 import JobDetails from "../JobBoard-Components/JobDetails";
 
 class AdventurerDetailPage extends React.Component {
@@ -31,12 +32,15 @@ class AdventurerDetailPage extends React.Component {
     adventurer: { quests: [] },
   };
   componentDidMount = () => {
+    setLoad(true);
     getAdventurer(this.props.id)
       .then(({ adventurer }) => {
+        setLoad(false);
         this.setState({ adventurer });
       })
       .catch((err) => {
         const msg = formatErrorMessage(err);
+        setLoad(false);
         toast.error(`Error. ${msg}`);
       });
   };
